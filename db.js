@@ -25,9 +25,9 @@ async function dataSeed() {
         const authors = client.db(dbName).collection('authors')
         const publishers = client.db(dbName).collection('publishers');
         const books = client.db(dbName).collection('books');
-        authors.drop()
-        publishers.drop()
-        books.drop()
+        //authors.drop()
+        //publishers.drop()
+        //books.drop()
         let authorsArr = []
         for(let i = 0; i < 20; i++){
             const author = {
