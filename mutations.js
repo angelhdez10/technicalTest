@@ -27,7 +27,6 @@ const Mutation =  {
             const valid = await bcrypt.compare(args.password, user ? user.password : '')
             if(!user || !valid) throw new AuthenticationError('Invalid password or username')
             const token = await createToken(user)
-            console.log(token)
             return { token }
         },
         addAuthor:async (root, args, context) => {

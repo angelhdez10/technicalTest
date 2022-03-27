@@ -25,7 +25,7 @@ async function dataSeed() {
         const authors = client.db(dbName).collection('authors')
         const publishers = client.db(dbName).collection('publishers');
         const books = client.db(dbName).collection('books');
-        //authors.drop() 
+        authors.drop() 
         publishers.drop()
         books.drop()
         let authorsArr = []
@@ -71,7 +71,6 @@ async function dataSeed() {
             publisherArray[pindex].books.push(book._id)
             booksArr = [...booksArr, book]
         }
-        console.log(booksArr)
         await Promise.all([
             authors.insertMany(authorsArr),
             publishers.insertMany(publisherArray),
