@@ -22,12 +22,12 @@ const server = new ApolloServer({
         if(auth && auth.toLowerCase().startsWith('bearer ')){
             const token = auth.substring(7)
             try{
-                const decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+                let decodedToken = jwt.verify(token, process.env.JWT_SECRET)
+                const authorizated = await User.findById(decodedToken.id)
+                return { currentUser: authorizated }
             }catch(err){
                 return {}
             }
-            const authorizated = await User.findById(decodedToken.id)
-            return { currentUser: authorizated }
         }
     }
 })
