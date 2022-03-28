@@ -32,7 +32,7 @@ const Query = {
         },
         allBooks: async (root, args) => {
             if(!args.page) throw new UserInputError('Page is required')
-            let page = args.page*10
+            let page = args.page*10 
             let books = await Book.find({
                 title: !args.title ? {$regex : /\w+/} : args.title,
                 publicationYear: !args.publicationYear ? {$gt : 0} : args.publicationYear
