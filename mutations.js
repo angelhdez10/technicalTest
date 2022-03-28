@@ -113,7 +113,7 @@ const Mutation =  {
                     invalidArgs: args
                 })
             })
-            return book
+            return await Book.findById(args.id).populate('authors').populate('publisher')
         },
         addPublisher: async (root, args, context) => {
             if(!context.currentUser) throw new AuthenticationError('Not authenticated')
